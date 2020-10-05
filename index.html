@@ -1,8 +1,22 @@
 <!DOCTYPE html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
         }
+    
+    axios.post('https://cors-anywhere.herokuapp.com/http://onlinecontactsrestapi-env.eba-2cguy7jr.us-east-2.elasticbeanstalk.com/contacts', {
+    firstName: 'Fred',
+    lastName: 'Flintstone',
+    telephone: '999',
+    email: 'sdgdgdfg'
+    })
+    .then(function (response) {
+    console.log(response);
+    })
+    .catch(function (error) {
+    console.log(error);
+    });
 
 </script>
 <html lang="en">
