@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src='index.js'></script>
 <script>
+
+
+
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
         }
-    
-    axios.post('https://cors-anywhere.herokuapp.com/http://onlinecontactsrestapi-env.eba-2cguy7jr.us-east-2.elasticbeanstalk.com/contacts', {
-    firstName: 'Fred',
-    lastName: 'Flintstone',
-    telephone: '999',
-    email: 'sdgdgdfg'
-    })
-    .then(function (response) {
-    console.log(response);
-    })
-    .catch(function (error) {
-    console.log(error);
-    });
+
+    function sendCustomerDetails() {
+
+        var fs = document.getElementById("firstname").value;
+        var ls = document.getElementById("lastname").value;
+        var tl = document.getElementById("telephone").value;
+        var em = document.getElementById("email").value;
+
+        axios.post('https://cors-anywhere.herokuapp.com/http://onlinecontactsrestapi-env.eba-2cguy7jr.us-east-2.elasticbeanstalk.com/contacts', {
+        firstName: fs,
+        lastName: ls,
+        telephone: tl,
+        email: em
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
+    }
 
 </script>
 <html lang="en">
@@ -329,34 +341,27 @@
                                </div>
 
                                <div class="form__group">
-                                   <input type="text" class="form__input" placeholder="Full Name" id="name" required>
-                                   <label for="name" class="form__label">Full name</label>
+                                   <input type="text" class="form__input" placeholder="Firstname" id="firstname" required>
+                                   
                                </div>
 
                                <div class="form__group">
-                                <input type="email" class="form__input" placeholder="Email address" id="email" required>
-                                <label for="email" class="form__label">Email address</label>
-                               </div>
-
-                               <div class="form__group u-margin-bottom-medium">
-                                   <div class="form__radio-group">
-                                       <input type="radio" class="form__radio-input" id="small" name="size">
-                                       <label for="small" class="form__radio-label">
-                                           <span class="form__radio-button"></span>
-                                           Small tour group</label>
-                                   </div>
-
-                                   <div class="form__radio-group">
-                                    <input type="radio" class="form__radio-input" id="large" name="size">
-                                    <label for="large" class="form__radio-label">
-                                        <span class="form__radio-button"></span>
-                                        Large tour group
-                                    </label>
-                                   </div>
+                                <input type="text" class="form__input" placeholder="Surname" id="lastname" required>
+                                
                                </div>
 
                                <div class="form__group">
-                                   <button class="btn btn--green">Next step &rarr;</button>
+                                <input type="text" class="form__input" placeholder="Telephone" id="telephone" required>
+                                
+                            </div>
+
+                            <div class="form__group">
+                             <input type="email" class="form__input" placeholder="Email address" id="email" required>
+                             
+                            </div>
+
+                               <div class="form__group">
+                                   <button class="btn btn--green" onclick="sendCustomerDetails()">Register &rarr;</button>
                                </div>
                            </form>
                        </div>
